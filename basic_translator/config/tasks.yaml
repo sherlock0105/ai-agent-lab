@@ -1,0 +1,15 @@
+﻿translate_task:
+  description: >
+    Translate {sentence} from English to Korean without making mistakes.
+  expected_output: >
+    A well formatted translation from English to Korean using proper capitalization of names and places.
+  agent: translator_agent
+  context: []
+
+retranslate_task:
+  description: >
+    Translate {sentence} from English to Greek without making mistakes.
+  expected_output: >
+    A well formatted translation from English to Greek using proper capitalization of names and places.
+  agent: greek_translator_agent
+  context: []
