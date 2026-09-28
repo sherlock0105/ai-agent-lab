@@ -1,4 +1,4 @@
-# ai_agent
+# ai-agent-lab
 
 AI agent practice projects. Each lesson has its own folder and dependencies.
 
