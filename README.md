@@ -1,26 +1,26 @@
-# ai-agent-lab
+﻿# AI 에이전트 실습실
 
-AI agent practice projects. Each lesson has its own folder and dependencies.
+Python과 CrewAI로 에이전트의 역할 분담, 도구 호출, 작업 연결을 실습하는 저장소입니다. 각 프로젝트는 독립된 설정과 의존성을 갖고 있습니다.
 
-## Projects
+## 프로젝트
 
-- [basic_translator](basic_translator/): Translate English into Korean and Greek with CrewAI.
+| 프로젝트 | 설명 | 배울 수 있는 내용 |
+|---|---|---|
+| [영어 → 한국어·그리스어 번역](basic_translator/) | 영어 문장 하나를 두 언어로 번역합니다. | 에이전트 역할 정의, YAML 설정, 순차 실행 |
+| [뉴스 수집·요약 에이전트](news-reader-agent/) | 주제에 맞는 웹 문서를 검색하고 기사 본문을 읽어 뉴스 보고서를 작성합니다. | 검색 API, 브라우저 자동화, 사용자 정의 도구, 작업 간 결과 전달 |
 
-## Run the translator (PowerShell)
+## 시작하기
 
-Install Python 3.13 and uv, then run:
+Python 3.13과 uv를 준비한 뒤 저장소를 내려받습니다.
 
 ```powershell
-cd basic_translator
-Copy-Item .env.example .env
-# Set OPENAI_API_KEY in .env before running.
-uv run main.py
+git clone https://github.com/sherlock0105/ai-agent-lab.git
+cd ai-agent-lab
 ```
 
-The program calls the OpenAI API and may incur usage charges.
-Keep .env and .venv out of Git.
+실습할 프로젝트 폴더로 이동한 뒤 해당 README의 설치·실행 안내를 따르세요. `uv sync --locked`는 각 폴더의 `uv.lock`에 기록된 의존성을 설치합니다.
 
-## Add another lesson
+- [번역 프로젝트 사용법과 작동 원리](basic_translator/README.md)
+- [뉴스 프로젝트 사용법과 작동 원리](news-reader-agent/README.md)
 
-Create a sibling folder next to basic_translator, with its own main.py,
-pyproject.toml, and uv.lock. Run uv commands from that lesson folder.
+API 키는 각 프로젝트의 `.env`에 입력합니다. `.env`, 가상환경, 뉴스 실행 결과는 Git에서 제외합니다. 실행 시 OpenAI 및 검색 API 사용량이 발생할 수 있습니다.

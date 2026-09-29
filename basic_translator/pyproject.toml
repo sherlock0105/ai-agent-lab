@@ -1,7 +1,7 @@
 [project]
-name = "news-reader-agent"
+name = "basic-translator"
 version = "0.1.0"
-description = "Add your description here"
+description = "CrewAI의 두 번역 에이전트로 영어 문장을 한국어와 그리스어로 번역하는 프로젝트"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
