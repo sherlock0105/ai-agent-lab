@@ -1,0 +1,11 @@
+[project]
+name = "job-hunter-agent"
+version = "0.1.0"
+description = "CrewAI로 SAP ABAP 채용 공고를 찾고 지원 적합도를 분석하는 실습"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "crewai[tools]>=0.152.0",
+    "firecrawl-py==2.16.3",
+    "python-dotenv>=1.1.1",
+]

@@ -1,0 +1,13 @@
+.env
+.env.*
+!.env.example
+.venv/
+.uv-cache/
+.crewai-*/
+.smoke-test/
+.publish/
+__pycache__/
+*.py[cod]
+output/
+knowledge/resume.txt
+.vscode/

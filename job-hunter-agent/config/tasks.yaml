@@ -1,0 +1,67 @@
+﻿job_extraction_task:
+  description: >
+    {today} 기준 사람인·잡코리아의 SAP ABAP 개발 공고를 조사한다.
+    아래 자료는 프로그램이 방금 검색한 개별 공고 후보이다.
+    <검색결과>{search_results}</검색결과>
+    각 공고의 '접수기간/방법'에서 접수 중·상시채용 여부와 마감일을 확인한다.
+    '마감되었습니다'라고 표시된 공고, 종료일이 지난 공고, 상태를 확인할 수 없는 공고는 제외한다.
+    관련 공고 추천 목록의 문구를 현재 공고의 모집 상태로 사용하지 않는다.
+    같은 공고의 중복 링크를 제거한다. 확인한 공고는 경력 요건이 높아도 목록에 남겨
+    다음 작업에서 지원 적합도를 평가한다. 자료에 있는 공고를 검토하지 않고 빈 목록을 반환하지 않는다.
+    status_checked_on은 {today}로 기록한다. 원문에 없는 필수 텍스트는 '미기재'로 표시한다.
+  expected_output: >
+    모집 중임을 확인한 공고의 JobList JSON. 회사, 직무, 근무지, 모집 상태,
+    마감일 또는 상시채용, 경력·학력 요건, 원문 링크를 포함한다.
+  agent: job_search_agent
+  output_file: output/current_jobs.json
+  create_directory: true
+
+job_matching_task:
+  description: >
+    앞 작업의 모든 공고를 지식 자료의 실제 이력서와 비교한다.
+    공고별로 match_score 1~5점과 reason을 작성한다.
+    reason에는 충족하는 요건, 부족한 요건, 지원 가능 여부를 한글로 적는다.
+    교육·개인 프로젝트를 재직 경력으로 계산하지 않고 원본 공고를 모두 유지한다.
+  expected_output: >
+    각 항목에 job, match_score, reason이 있는 RankedJobList JSON.
+  agent: job_matching_agent
+  output_file: output/ranked_jobs.json
+  create_directory: true
+
+company_research_task:
+  description: >
+    평가된 공고 전체를 먼저 표로 요약한다. 회사명, 직무, 모집 상태,
+    마감일·상시채용 여부, 적합도, 원문 링크를 보여준다.
+    이어서 회사별 사업과 SAP 직무를 조사하고 출처 링크를 적는다.
+    확인되지 않은 회사 정보와 기술 환경은 추정이라고 표시한다.
+    기준일은 {today}이며 지원 전 원문 재확인을 안내한다.
+  expected_output: >
+    전체 공고 요약표와 회사별 사업·직무·지원 적합성 분석을 담은 한글 문서.
+  agent: company_research_agent
+  output_file: output/company_research.md
+  create_directory: true
+  markdown: true
+
+resume_rewriting_task:
+  description: >
+    평가된 공고와 기업 분석을 참고해 공고별 이력서 작성 방향을 적는다.
+    실제 이력에서 강조할 경험, 지원 요약 예시, 부족한 요건을 정직하게 설명할 방법을 제안한다.
+    이력서에 없는 기술을 경험이나 '학습 중'인 내용으로 새로 주장하지 않는다.
+    전체 이력서를 다시 쓰지 않는다.
+  expected_output: >
+    공고별 이력서 강조점과 지원 요약 예시를 담은 한글 문서.
+  agent: resume_optimization_agent
+  output_file: output/resume_guidance.md
+  create_directory: true
+  markdown: true
+
+interview_prep_task:
+  description: >
+    공고별로 예상 질문, 실제 경험에 근거한 답변 요점,
+    면접관에게 확인할 질문을 간결하게 적는다. 없는 경험을 지어내지 않는다.
+  expected_output: >
+    공고별 핵심 면접 질문과 답변 요점을 담은 한글 문서.
+  agent: interview_prep_agent
+  output_file: output/interview_prep.md
+  create_directory: true
+  markdown: true
