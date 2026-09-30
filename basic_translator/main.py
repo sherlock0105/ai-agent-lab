@@ -46,6 +46,6 @@ class TranslatorCrew:
 
 result = TranslatorCrew().assemble_crew().kickoff(
     inputs={
-        "sentence": "I'm Dohyun and I like to ride my bicycle in Napoli",
+        "sentence": "I'm Alex and I like to ride my bicycle in Napoli",
     }
 )

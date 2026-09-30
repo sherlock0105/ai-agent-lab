@@ -1,4 +1,4 @@
-# 영어 → 한국어·그리스어 번역 에이전트
+# 기초 번역 실습: 영어 → 한국어·그리스어
 
 영어 문장 하나를 입력하면 한국어 번역 에이전트와 그리스어 번역 에이전트가 각각 번역하는 CrewAI 실습입니다. 이름과 지명의 표기, 자연스러운 표현을 고려하도록 각 에이전트의 역할을 설정했습니다.
 
@@ -26,7 +26,7 @@ uv run main.py
 
 ```python
 inputs={
-    "sentence": "I'm Dohyun and I like to ride my bicycle in Napoli",
+    "sentence": "I'm Alex and I like to ride my bicycle in Napoli",
 }
 ```
 
