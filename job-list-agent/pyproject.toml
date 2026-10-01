@@ -1,0 +1,10 @@
+[project]
+name = "job-list-agent"
+version = "0.1.0"
+description = "SAP ABAP 채용공고 수집·요약 및 디스코드 전송"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "firecrawl-py==2.16.3",
+    "python-dotenv>=1.1.1",
+]
